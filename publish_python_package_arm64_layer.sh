@@ -10,9 +10,9 @@ rm -rf python && mkdir python
 
 # install to directory
 pip3 install \
+    --python 3.11 \
     --platform manylinux2014_aarch64 \
     --implementation cp \
-    --python 3.9 \
     --target=./python \
     --only-binary=:all: --upgrade \
     $package_name
@@ -21,8 +21,8 @@ pip3 install \
 rm -f python.zip & zip -vr python.zip python/ -x "tests" -x "*.pyc"
 
 # push to aws
-aws lambda publish-layer-version --layer-name $package_name-Arm64 --description "$package_name arm64"  \
+aws lambda publish-layer-version --layer-name $package_name-Arm64 --description "$package_name python3.11 arm64"  \
 	--license-info "MIT" --zip-file fileb://python.zip \
- 	--compatible-runtimes python3.9 \
+ 	--compatible-runtimes python3.11 \
   	--compatible-architectures "arm64" \
   	--region ap-southeast-1
