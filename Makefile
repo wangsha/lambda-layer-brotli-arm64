@@ -1,8 +1,8 @@
 
 download-numpy:
 	rm -rf python.zip & mkdir -p python & rm -rf python/ &
-	pip install \
-    --python 3.11 \
+	/opt/homebrew/bin/python3.11 -m pip --python /opt/homebrew/bin/python3.11 \
+    install \
     --platform manylinux2014_aarch64 \
     --implementation cp \
     --target=./python \

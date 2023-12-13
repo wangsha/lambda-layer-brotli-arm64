@@ -9,8 +9,8 @@ echo publish layer $package_name for arm64 architecture
 rm -rf python && mkdir python
 
 # install to directory
-pip3 install \
-    --python 3.11 \
+/opt/homebrew/bin/python3.11 -m pip --python /opt/homebrew/bin/python3.11 \
+    install \
     --platform manylinux2014_aarch64 \
     --implementation cp \
     --target=./python \
@@ -26,3 +26,9 @@ aws lambda publish-layer-version --layer-name $package_name-Arm64 --description 
  	--compatible-runtimes python3.11 \
   	--compatible-architectures "arm64" \
   	--region ap-southeast-1
+
+aws lambda publish-layer-version --layer-name $package_name-Arm64 --description "$package_name python3.11 arm64"  \
+	--license-info "MIT" --zip-file fileb://python.zip \
+ 	--compatible-runtimes python3.11 \
+  	--compatible-architectures "arm64" \
+  	--region eu-west-3
