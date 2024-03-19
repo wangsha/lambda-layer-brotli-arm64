@@ -28,5 +28,8 @@ publish-cryptography:
 publish-babel:
 	./publish_python_package_arm64_layer.sh babel
 
+publish-msgspec:
+	./publish_python_package_arm64_layer.sh msgspec
+
 deploy-ubuntu:
 	rsync -avzP -rt --delete . detalytics.aws:publish-python-package-as-lambda
