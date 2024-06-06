@@ -32,7 +32,7 @@ publish-msgspec:
 	./publish_python_package_arm64_layer.sh msgspec
 
 publish-pydantic:
-	./publish_python_package_arm64_layer.sh pydantic regex
+	./publish_python_package_arm64_layer.sh pydantic tiktoken tokenizers
 
 deploy-ubuntu:
 	rsync -avzP -rt --delete . detalytics.aws:publish-python-package-as-lambda
