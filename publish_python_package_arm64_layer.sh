@@ -18,6 +18,9 @@ rm -rf python && mkdir python
     --only-binary=:all: --upgrade \
     $package_names
 
+# delete tests filder
+find python/ -type d -name 'tests' -exec rm -rf {} +
+
 # make zip package
 rm -f python.zip & zip -vr python.zip python/ -x "tests" -x "*.pyc"
 
