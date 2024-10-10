@@ -31,8 +31,11 @@ publish-babel:
 publish-msgspec:
 	./publish_python_package_arm64_layer.sh msgspec
 
-publish-pydantic:
-	./publish_python_package_arm64_layer.sh analytics-package litellm numpy pandas sympy
+publish-langchain-core:
+	./publish_python_package_arm64_layer.sh pydantic msgspec jiter
+
+publish-litellm:
+	./publish_python_package_arm64_layer.sh litellm numpy pandas sympy
 
 deploy-ubuntu:
 	rsync -avzP -rt --delete . detalytics.aws:publish-python-package-as-lambda
